@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Struktur Aljabar I — Companion Web"
+  subtitle: "Sains & Teknologi Aljabar Interaktif | Institut Teknologi Sumatera"
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: "Beranda"
+        href: index.qmd
+      - section: "Modul Interaktif"
+        contents:
+          - text: "Modul 1: D4 & Serat Homomorfisme"
+            href: modul-01-d4-serat.qmd
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    css: styles.css

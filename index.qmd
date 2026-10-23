@@ -1,0 +1,23 @@
+---
+title: "Buku Ajar Interaktif: Struktur Aljabar I (Grup)"
+subtitle: "Program Studi Matematika — Institut Teknologi Sumatera (ITERA)"
+format: html
+---
+
+## Selamat Datang
+
+Website pendamping ini dirancang untuk melengkapi draf buku ajar **Bacaan Struktur Aljabar I: Grup**. Di sini Anda dapat mengeksplorasi konsep-konsep abstrak seperti **grup simetri, koset, kernel, dan serat homomorfisme** secara komputasional dan visual.
+
+::: {.callout-note}
+### Fitur Utama Platform
+1. **Eksplorasi Komputasi:** Menjalankan skrip SageMath langsung di browser tanpa perlu instalasi.
+2. **Visualisasi Geometris:** Memahami aksi grup dan simetri secara manipulatif via GeoGebra.
+3. **Penyelidikan Mandiri:** Melatih penyusunan argumen dan pembuktian melalui lembar kerja *guided-discovery*.
+:::
+
+## Navigasi Modul
+
+Silakan pilih modul pembelajaran dari bilah navigasi di sebelah kiri atau klik tautan di bawah ini:
+
+* **[Modul 1: Grup Dihedral $D_4$ dan Serat Homomorfisme](modul-01-d4-serat.qmd)**  
+  Eksplorasi tabel Cayley, visualisasi simetri persegi, dan pembuktian komputasional bahwa serat homomorfisme bentuknya adalah koset dari kernel.

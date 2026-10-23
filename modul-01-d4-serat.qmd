@@ -1,0 +1,100 @@
+---
+title: "Modul 1: Grup Dihedral $D_4$ dan Serat Homomorfisme"
+format: html
+---
+
+::: {.lead}
+Pada modul ini, kita akan mengeksplorasi struktur **Grup Dihedral $D_4$** dan membuktikan secara intuitif serta komputasional bahwa **serat (*fiber*)** dari suatu homomorfisme selalu membentuk koset dari kernel.
+:::
+
+## 1. Visualisasi Simetri Geometris $D_4$
+
+Grup $D_4$ mewakili 8 simetri pada bangun persegi (4 rotasi dan 4 refleksi). Gunakan applet GeoGebra di bawah untuk mengamati perubahan posisi titik sudut persegi saat ditransformasikan.
+
+::: {.geogebra-container}
+<iframe 
+  src="https://www.geogebra.org/material/iframe/id/m8v93k8e/width/700/height/450/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/true/asb/false/sri/true/rc/false/ld/false/sdz/true/ctl/true" 
+  width="100%" 
+  height="100%" 
+  style="border:0;">
+</iframe>
+:::
+
+---
+
+## 2. Tabel Cayley & Komputasi Struktur $D_4$
+
+Gunakan widget SageMathCell di bawah ini untuk menampilkan daftar elemen dan Tabel Cayley dari $D_4$.
+
+<script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+<script>
+  sagecell.makeSagecell({
+    inputLocation: '.sage-d4-table',
+    evalButtonText: 'Jalankan Komputasi Sage'
+  });
+</script>
+
+<div class="sage-d4-table">
+  <script type="text/x-sage">
+# Inisialisasi Grup Dihedral D4
+G = DihedralGroup(4)
+
+print("--- DAFTAR ELEMEN D4 ---")
+for i, g in enumerate(G.list()):
+    print(f"e_{i} = {g}")
+
+print("\n--- TABEL CAYLEY D4 ---")
+show(G.cayley_table())
+  </script>
+</div>
+
+---
+
+## 3. Eksplorasi Serat (*Fiber*) Homomorfisme Paritas
+
+Misalkan didefinisikan homomorfisme $\phi : D_4 \rightarrow \mathbb{Z}_2$ berdasarkan paritas permutasi:
+* Rotasi (permutasi genap) $\mapsto 0$
+* Refleksi (permutasi ganjil) $\mapsto 1$
+
+Skrip berikut menghitung **Kernel** $K = \phi^{-1}(\{0\})$ dan **Serat** $\phi^{-1}(\{1\})$, lalu memverifikasinya dengan koset kiri $sK$.
+
+<script>
+  sagecell.makeSagecell({
+    inputLocation: '.sage-fiber',
+    evalButtonText: 'Hitung Serat & Koset'
+  });
+</script>
+
+<div class="sage-fiber">
+  <script type="text/x-sage">
+G = DihedralGroup(4)
+elemen = G.list()
+
+# 1. Kernel K = Serat dari 0 (Elemen Genap / Rotasi)
+K = [g for g in elemen if g.is_even()]
+
+# 2. Serat dari 1 (Elemen Ganjil / Refleksi)
+fiber_1 = [g for g in elemen if not g.is_even()]
+
+# 3. Ambil salah satu refleksi s dari fiber_1
+s = fiber_1[0]
+
+# 4. Hitung Koset Kiri sK
+koset_sK = [s * k for k in K]
+
+print("Kernel K = Fiber(0)  :", K)
+print("Fiber(1)              :", fiber_1)
+print("Koset Kiri sK         :", koset_sK)
+print("\nApakah Fiber(1) == sK?:", set(fiber_1) == set(koset_sK))
+  </script>
+</div>
+
+---
+
+## 4. Lembar Kerja Eksplorasi & Analisis Mandiri
+
+ Jawablah pertanyaan-pertanyaan berikut dengan memodifikasi skrip SageMath di atas:
+
+1. **Uji Penutupan Subgrup:** Apakah Kernel $K$ terbukti merupakan subgrup dari $D_4$? Periksa apakah perkalian sembarang dua elemen di $K$ tetap berada di $K$.
+2. **Perbandingan Koset Kanan & Kiri:** Ubah baris `koset_sK = [s * k for k in K]` menjadi `[k * s for k in K]` (koset kanan $Ks$). Apakah $sK = Ks$? Apa implikasinya terhadap sifat subgrup $K$?
+3. **Generalisasi ke $D_n$:** Ganti `DihedralGroup(4)` menjadi `DihedralGroup(6)`. Berapa banyak elemen pada Kernel dan berapa banyak elemen pada Serat? Apakah rasionya tetap sama?
